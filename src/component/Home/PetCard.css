@@ -1,0 +1,17 @@
+.petCard {
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  width: 20rem;
+  height: auto;
+  border: 2px solid red;
+}
+
+.petCard a {
+}
+
+.petCard img {
+  width: 100%;
+  height: 70%;
+  /* object-fit: cover; */
+}
