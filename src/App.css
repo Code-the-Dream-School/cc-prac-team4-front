@@ -13,6 +13,8 @@ html {
 body {
   background-color: mistyrose;
   box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background: rgb(248, 242, 242);
 }
 
 
