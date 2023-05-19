@@ -1,13 +1,65 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
+// import React from "react";
+// import Button from "react-bootstrap/Button";
 
-export default function AdoptButton() {
+// function AdoptButton() {
+//   return (
+//     <>
+//       <div className="mb-2">
+//         <Button variant="primary" size="lg">
+//           ADIPT NOW
+//         </Button>{" "}
+//         <Button variant="secondary" size="lg">
+//           Large button
+//         </Button>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default AdoptButton;
+
+// import Button from "react-bootstrap/Button";
+
+// function AdoptButton() {
+//   const [adopt, setAdopt] = React.useState();
+
+//   const handleClick = () => {
+//     console.log("Button click ...");
+//   };
+//   return (
+//     <>
+//       <Button
+//         type="button"
+//         onClick={handleClick}
+//         variant="primary"
+//         size="lg"
+//         active
+//       >
+//         ADOPT NOW
+//       </Button>{" "}
+// {
+/* <Button variant="secondary" size="lg" active>
+        Button
+      </Button> */
+// }
+//     </>
+//   );
+// }
+
+// export default AdoptButton;
+
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+function AdoptButton() {
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate("/application", { replace: true });
+  };
   return (
-    <Box sx={{ "& > :not(style)": { m: 1 } }}>
-      <Fab variant="extended" color="primary" aria-label="add">
-        ADOPT NOW
-      </Fab>
-    </Box>
+    <>
+      <button onClick={clickHandler}>ADOPT NOW</button>
+    </>
   );
 }
+export default AdoptButton;

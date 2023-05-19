@@ -1,42 +1,52 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import AdoptButton from "./AdoptButton";
-import whiteCat from "../../images/whiteCat.jpg";
-import "./PetCard.css";
+// import React from "react";
+// import { Link } from "react-router-dom";
+// import whiteCat from "../../images/whiteCat.jpg";
+// import "./PetCard.css";
+// import Button from 'react-bootstrap/Button';
+
 // import { Rating } from "@material-ui/lab";
 
-const PetCard = () => {
-  //   const options = {
-  //     // value: product.ratings,
-  //     readOnly: true,
-  //     precision: 0.5,
-  //   };
-  return (
-    // <Link className="petCard" to={`/pet/${pet._id}`}>
-    <div className="petCard">
-      <Link to="/pet/cat`">
-        {/* <img src={pet.images[0].url} alt={pet.name} /> */}
-        <img src={whiteCat} alt="cat" />
+// const PetCard = () => {
+//   const options = {
+//     // value: product.ratings,
+//     readOnly: true,
+//     precision: 0.5,
+//   };
+//   return (
+// <Link className="petCard" to={`/pet/${pet._id}`}>
+// <div className="petCard">
+//   <Link to="/pet/cat`">
 
-        {/* <p>{pet.name}</p> */}
-        <p>Cat</p>
-        <div>
-          {/* <Rating {...options} />{" "} */}
-          <span className="petCardSpan">
-            {" "}
-            {/* ({pet.numOfReviews} Reviews) */}
-          </span>
-        </div>
-        {/* <span>{`₹${product.price}`}</span> */}
-        <span>
-          <AdoptButton />
-        </span>
-      </Link>
-    </div>
-  );
-};
+/* <img src={pet.images[0].url} alt={pet.name} /> */
 
-export default PetCard;
+// <img src={whiteCat} alt="cat" />
+
+/* <p>{pet.name}</p> */
+
+// <p>Cat</p>
+// <div>
+
+/* <Rating {...options} />{" "} */
+
+//   <span className="petCardSpan">
+// {" "}
+
+/* ({pet.numOfReviews} Reviews) */
+
+//   </span>
+// </div>
+
+/* <span>{`₹${product.price}`}</span> */
+
+//         <span>
+//           <button>ADOPT</button>
+//         </span>
+//       </Link>
+//     </div>
+//   );
+// };
+
+// export default PetCard;
 
 // import * as React from 'react';
 // import Card from '@mui/material/Card';
@@ -73,3 +83,40 @@ export default PetCard;
 //     </Card>
 //   );
 // }
+
+/* <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card with stretched link</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
+  </div>
+</div> */
+
+import React from "react";
+// import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import whiteCat from "../../images/whiteCat.jpg";
+import "./PetCard.css";
+import AdoptButton from "./AdoptButton";
+import { Link } from "react-router-dom";
+
+function PetCard() {
+  return (
+    <Link className="petCard" to="/pet/cat`">
+      <Card>
+        <Card.Img variant="top" src={whiteCat} alt="cat" />
+        <Card.Body>
+          <Card.Title>Card Title</Card.Title>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </Card.Text>
+          <AdoptButton />
+        </Card.Body>
+      </Card>
+    </Link>
+  );
+}
+
+export default PetCard;

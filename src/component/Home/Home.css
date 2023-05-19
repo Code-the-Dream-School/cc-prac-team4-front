@@ -24,3 +24,20 @@ video {
   color: white;
   padding-left: 4rem;
 }
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  justify-items: center;
+  margin-top: 3rem;
+}
+
+/* Responsive Design Mobile */
+@media screen and (max-width: 330px) {
+  body {
+    font-size: 0.7rem;
+  }
+  video {
+    display: none;
+  }
+}

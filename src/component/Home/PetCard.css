@@ -4,7 +4,8 @@
   background-color: whitesmoke;
   width: 20rem;
   height: auto;
-  border: 2px solid red;
+  border-radius: 10px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.8);
 }
 
 .petCard a {
@@ -14,4 +15,17 @@
   width: 100%;
   height: 70%;
   /* object-fit: cover; */
+}
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  width: 20rem;
+  height: auto;
+  border: 2px solid red;
+}
+.Card Img {
+  width: 100%;
+  height: 70%;
 }
