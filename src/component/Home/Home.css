@@ -3,6 +3,24 @@ header {
   width: auto;
   justify-content: center;
 }
+
+main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  position: relative;
+  flex-direction: row;
+  background-color: var(--background-color);
+  margin: 20px auto 0;
+  padding: 1rem;
+  border-radius: 18px;
+  width: min(90%, 50rem);
+  min-height: 30rem;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1rem;
+}
 .home_banner {
   width: 100%;
   height: 40rem;
@@ -26,7 +44,7 @@ video {
 }
 .container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   justify-items: center;
   margin-top: 3rem;
