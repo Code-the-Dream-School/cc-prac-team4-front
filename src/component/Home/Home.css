@@ -9,11 +9,11 @@ main {
   flex: 1;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 2rem;
   position: relative;
   flex-direction: row;
   background-color: var(--background-color);
-  margin: 20px auto 0;
+  margin: 1.5rem auto 0;
   padding: 1rem;
   border-radius: 18px;
   width: min(90%, 50rem);
@@ -42,7 +42,7 @@ video {
   color: white;
   padding-left: 4rem;
 }
-.container {
+.cardsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;

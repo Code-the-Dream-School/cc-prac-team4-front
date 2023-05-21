@@ -31,11 +31,13 @@ const Home = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="container" id="container">
-            <PetCard />
-            <PetCard />
-            <PetCard />
-            <PetCard />
+          <div className="cardsContainerWithSort">
+            <div className="cardsContainer" id="container">
+              <PetCard />
+              <PetCard />
+              <PetCard />
+              <PetCard />
+            </div>
           </div>
         )}
       </div>
