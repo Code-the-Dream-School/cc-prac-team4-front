@@ -4,14 +4,8 @@
 // import "./PetCard.css";
 // import Button from 'react-bootstrap/Button';
 
-// import { Rating } from "@material-ui/lab";
-
 // const PetCard = () => {
-//   const options = {
-//     // value: product.ratings,
-//     readOnly: true,
-//     precision: 0.5,
-//   };
+//
 //   return (
 // <Link className="petCard" to={`/pet/${pet._id}`}>
 // <div className="petCard">
@@ -23,7 +17,7 @@
 
 /* <p>{pet.name}</p> */
 
-// <p>Cat</p>
+// /<p>Cat</p>
 // <div>
 
 /* <Rating {...options} />{" "} */
@@ -93,30 +87,49 @@
   </div>
 </div> */
 
-import React from "react";
-// import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import whiteCat from "../../images/whiteCat.jpg";
-import "./PetCard.css";
-import AdoptButton from "./AdoptButton";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Card from 'react-bootstrap/Card';
+import whiteCat from '../../images/whiteCat.jpg';
+import './PetCard.css';
+import { Link } from 'react-router-dom';
+import NavigateButton from '../layout/NavigateButton';
 
 function PetCard() {
   return (
-    <Link className="petCard" to="/pet/cat`">
+    <>
       <Card>
-        <Card.Img variant="top" src={whiteCat} alt="cat" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <AdoptButton />
-        </Card.Body>
+        <Link className="petCard" to="/pet/cat`">
+          <Card.Img variant="top" src={whiteCat} alt="white cat" />
+
+          <Card.Body>
+            <Card.Title>Musya</Card.Title>
+            <Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </Card.Text>
+
+            <NavigateButton />
+          </Card.Body>
+        </Link>
       </Card>
-    </Link>
+    </>
   );
 }
 
 export default PetCard;
+
+//     <Card style={{ width: '18rem' }}>
+//       <Card.Img variant="top" src="holder.js/100px180" />
+//       <Card.Body>
+//         <Card.Title>Card Title</Card.Title>
+//         <Card.Text>
+//           Some quick example text to build on the card title and make up the
+//           bulk of the card's content.
+//         </Card.Text>
+//         <Button variant="primary">Go somewhere</Button>
+//       </Card.Body>
+//     </Card>
+//   );
+// }
+
+// export default BasicExample;

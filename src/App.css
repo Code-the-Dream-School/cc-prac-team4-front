@@ -1,3 +1,73 @@
+/*Desctop Design*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  box-sizing: border-box;
+  background: rgb(248, 242, 242);
+  color: #2d3748;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #2d3748;
+  background-color: transparent;
+}
+
+/* Responsive Design Mobile */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 70%;
+  }
+}
+
+/* Responsive Design Mobile */
+@media screen and (max-width: 330px) {
+  body {
+    font-size: 60%;
+  }
+}
+/* html { */
+/* // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5% */
+@include respond(big-desktop) {
+  font-size: 100%; /*1rem = 12, 12/16*/
+}
+@include respond(tab-land) {
+  /* width < 1200?*/
+  font-size: 70%; /*1 rem = 9px, 9/16 = 50%*/
+}
+@include respond(tab-port) {
+  /*width < 900?*/
+  font-size: 60%; /*1 rem = 8px, 8/16 = 50%*/
+}
+/* } */
+
+/* MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
+/* @include respond(big-desktop) {
+  font-size: 75%; //1rem = 12, 12/16
+} */
+
 /* * { */
 /* background-color: aqua; */
 /* font-family: Verdana, Geneva, Tahoma, sans-serif;

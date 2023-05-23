@@ -54,7 +54,7 @@ import { useNavigate } from "react-router-dom";
 function AdoptButton() {
   const navigate = useNavigate();
   const clickHandler = () => {
-    navigate("/application", { replace: true });
+    navigate("/application/confirm", { replace: true });
   };
   return (
     <>

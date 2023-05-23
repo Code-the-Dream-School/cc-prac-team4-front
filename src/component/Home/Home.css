@@ -12,7 +12,7 @@ main {
   gap: 2rem;
   position: relative;
   flex-direction: row;
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
   margin: 1.5rem auto 0;
   padding: 1rem;
   border-radius: 18px;
@@ -47,15 +47,20 @@ video {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   justify-items: center;
-  margin-top: 3rem;
+  margin-top: 5rem;
+}
+.find_pet_button button {
+  background-color: tomato;
+  border: 2px solid rgb(206, 92, 72);
+  border-radius: 18px;
 }
 
 /* Responsive Design Mobile */
 @media screen and (max-width: 330px) {
-  body {
+  /* body {
     font-size: 0.7rem;
-  }
+  } */
   video {
-    display: none;
+    display: block;
   }
 }
