@@ -6,6 +6,7 @@ import PetCard from './PetCard';
 // import AdoptButton from "./AdoptButton";
 // import FindYourPetButton from "./NavigateButton";
 import NavigateButton from '../layout/NavigateButton';
+
 const Home = () => {
   const [loading, setLoading] = useState(true);
 
@@ -31,14 +32,14 @@ const Home = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className="cardsContainerWithSort">
-            <div className="cardsContainer" id="container">
-              <PetCard />
-              <PetCard />
-              <PetCard />
-              <PetCard />
-            </div>
+          // <div className="cardsContainerWithSort">
+          <div className="cardsContainer" id="container">
+            <PetCard />
+            <PetCard />
+            <PetCard />
+            <PetCard />
           </div>
+          // </div>
         )}
       </div>
     </>

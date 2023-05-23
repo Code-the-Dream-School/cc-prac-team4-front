@@ -1,34 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 /*Desctop Design*/
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
+}
+:root {
+  /* Colors  */
+  --color-background: #f7f2f2;
+  /* rgb(248, 242, 242); */
+  --color-txt: #2d3748;
+  --color-btn-tomato: rgb(249, 225, 221);
+  --color-bg-footer: black;
+  /*--color-brand: #39191e;
+  --color-notes: hsl(46, 84%, 90%);
+  --color-add-notes: hsl(342, 100%, 86%); */
 }
 body {
-  box-sizing: border-box;
-  background: rgb(248, 242, 242);
-  color: #2d3748;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* box-sizing: border-box; */
+  background: var(--color-background);
+  color: var(--color-txt);
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Poppins', sans-serif;
   font-size: 100%;
+  /* width: 100%; */
 }
 
 a {
   text-decoration: none;
   color: #2d3748;
   background-color: transparent;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 }
 
 /* Responsive Design Mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   body {
     font-size: 70%;
   }
 }
 
 /* Responsive Design Mobile */
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 600px) {
   body {
     font-size: 60%;
   }
@@ -36,17 +53,17 @@ a {
 /* html { */
 /* // This defines what 1rem is
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5% */
-@include respond(big-desktop) {
-  font-size: 100%; /*1rem = 12, 12/16*/
-}
-@include respond(tab-land) {
+/* @include respond(big-desktop) {
+  font-size: 100%; 1rem = 12, 12/16
+} */
+/* @include respond(tab-land) {
   /* width < 1200?*/
-  font-size: 70%; /*1 rem = 9px, 9/16 = 50%*/
-}
-@include respond(tab-port) {
-  /*width < 900?*/
-  font-size: 60%; /*1 rem = 8px, 8/16 = 50%*/
-}
+/*font-size: 70%; /*1 rem = 9px, 9/16 = 50%*/
+/*} */
+/* @include respond(tab-port) { */
+/*width < 900?*/
+/* font-size: 60%; 1 rem = 8px, 8/16 = 50%*/
+/*} */
 /* } */
 
 /* MEDIA QUERY MANAGER

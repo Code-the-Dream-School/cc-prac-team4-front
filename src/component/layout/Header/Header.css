@@ -1,9 +1,14 @@
 /* Desctop Design*/
 .header {
+  /* position: fixed; */
+  display: flex;
+  flex-direction: row;
+  top: 0;
   padding: 0 1rem;
   height: 5rem;
   background-color: transparent;
   max-width: 95%;
+  /* z-index: 1000; */
 }
 .header_wrap {
   height: 100%;

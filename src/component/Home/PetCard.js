@@ -97,21 +97,23 @@ import NavigateButton from '../layout/NavigateButton';
 function PetCard() {
   return (
     <>
-      <Card>
-        <Link className="petCard" to="/pet/cat`">
-          <Card.Img variant="top" src={whiteCat} alt="white cat" />
+      <div className="cardContainer">
+        <Link className="petCard_link" to="/pet/cat`">
+          <Card className="petCard">
+            <Card.Img variant="top" src={whiteCat} alt="white cat" />
 
-          <Card.Body>
-            <Card.Title>Musya</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
+            <Card.Body>
+              <Card.Title>Musya</Card.Title>
+              <Card.Text>
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </Card.Text>
 
-            <NavigateButton />
-          </Card.Body>
+              {/* <NavigateButton /> */}
+            </Card.Body>
+          </Card>
         </Link>
-      </Card>
+      </div>
     </>
   );
 }
