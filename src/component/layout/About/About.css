@@ -3,11 +3,6 @@ img {
   height: 40rem;
 }
 
-/* body {
-    background-color: #f9ecdf;
-    color: #3f2f23;
-} */
-
 h1 {
   text-align: center;
   font-size: 3em;
@@ -27,7 +22,7 @@ h1 {
 
 .about-page-text p {
   display: flex;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   text-align: justify;
 }
 

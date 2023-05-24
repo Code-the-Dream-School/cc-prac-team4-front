@@ -10,10 +10,14 @@
 } */
 :root {
   /* Colors  */
-  --color-background: f7f2f2;
+  /* --color-background: red; */
+  --color-background: #f1f5f8;
   --color-txt: #2d3748;
   --color-btn-tomato: tomato;
-  --color-bg-footer: blue;
+
+  /* --color-bg-footer: blue; */
+  --color-bg-footer: rgba(50, 50, 58, 1);
+  --beautiful-green-button: #00a99d;
   /*--color-brand: #39191e;
   --color-notes: hsl(46, 84%, 90%);
   --color-add-notes: hsl(342, 100%, 86%); */

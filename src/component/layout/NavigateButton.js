@@ -2,49 +2,22 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-const NavigateButton = ({
-  // navigation: { navigate },
-  linkName,
-  children,
-  variant,
-  size,
-}) => {
-  // ({ size, title, navigation }) {
+//The NavigateButton lets us navigate to another screen in our app.
+const NavigateButton = ({ linkName, children, variant, size }) => {
+  // linkName is a destination name of the route
+  //variant and size - style of bootstrap Button (variant:'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', 'link'; size:'sm', 'lg')
   const navigate = useNavigate();
   const clickHandler = () => {
-    navigate(linkName, { replace: true });
-    // navigate(linkName);
+    navigate(linkName, { replace: true }); //replace-replace the current screen with a new one (linkName)
   };
   return (
     <>
       <div className="mb-2">
-        {/* <Button onClick={() => navigate({ route })} variant="primary" size="lg"> */}
-        <Button
-          onClick={clickHandler}
-          // variant="primary"
-          style={(variant, size)}
-        >
-          {/* <button onClick={() => navigate({ route })}> */}
+        <Button onClick={clickHandler} variant={variant} size={size}>
           {children}
-        </Button>{' '}
-        {/* FIND YOUR FRIENDS
-        </Button>{' '} */}
-        {/* <button onClick={clickHandler}>FIND YOUR PET</button> */}
+        </Button>
       </div>
     </>
   );
 };
 export default NavigateButton;
-
-// const Home = () => {
-// const navigate = useNavigate();
-
-// return (
-// 	<>
-// 		<h1 style={{color:"green"}}>GeeksForGeeks</h1>
-// 		<button onClick={()=>navigate("/about")}>About</button>
-// 	</>
-// )
-// };
-
-// export default Home;

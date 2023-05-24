@@ -6,9 +6,9 @@ const About = () => {
   return (
     <>
       <div className="about-page">
-        <h1>About Us</h1>
+        <h1>About our business</h1>
         <div className="about-page-text">
-          <img src={photoDog} alt="About" />
+          <img src={photoDog} alt="dog" />
           <p>"Find Your Fur-ever Friend!"</p>
           <p>
             Description: Welcome to Pawsome Companions, your go-to online
