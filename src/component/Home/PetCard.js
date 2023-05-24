@@ -87,46 +87,46 @@
   </div>
 </div> */
 
-import React from 'react';
-import Card from 'react-bootstrap/Card';
-import whiteCat from '../../images/whiteCat.jpg';
-import './PetCard.css';
-import { Link } from 'react-router-dom';
-import NavigateButton from '../layout/NavigateButton';
+// import React from 'react';
+// import Card from 'react-bootstrap/Card';
+// import whiteCat from '../../images/whiteCat.jpg';
+// import './PetCard.css';
+// import { Link } from 'react-router-dom';
+// import NavigateButton from '../layout/NavigateButton';
 
-function PetCard() {
-  const CardInfo = [
-    { image: '', title: '', text: '' },
-    { image: '', title: '', text: '' },
-    { image: '', title: '', text: '' },
-    { image: '', title: '', text: '' },
-  ];
-  return (
-    <>
-      <div className="cardContainer">
-        <Link className="petCard_link" to="/pet/cat`">
-          {/* <Card className="petCard"> */}
-          <Card style={{ width: '18rem' }}>
-            {/* <Card.Img variant="top" src={whiteCat} alt="white cat" /> */}
-            <Card.Img variant="top" src={whiteCat} />
+// function PetCard() {
+//   const CardInfo = [
+//     { image: '', title: '', text: '' },
+//     { image: '', title: '', text: '' },
+//     { image: '', title: '', text: '' },
+//     { image: '', title: '', text: '' },
+//   ];
+//   return (
+//     <>
+//       <div className="cardContainer">
+//         <Link className="petCard_link" to="/pet/cat`">
+//           {/* <Card className="petCard"> */}
+//           <Card style={{ width: '18rem' }}>
+//             {/* <Card.Img variant="top" src={whiteCat} alt="white cat" /> */}
+//             <Card.Img variant="top" src={whiteCat} />
 
-            <Card.Body>
-              <Card.Title>Musya</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
+//             <Card.Body>
+//               <Card.Title>Musya</Card.Title>
+//               <Card.Text>
+//                 Some quick example text to build on the card title and make up
+//                 the bulk of the card's content.
+//               </Card.Text>
 
-              <NavigateButton />
-            </Card.Body>
-          </Card>
-        </Link>
-      </div>
-    </>
-  );
-}
+//               <NavigateButton />
+//             </Card.Body>
+//           </Card>
+//         </Link>
+//       </div>
+//     </>
+//   );
+// }
 
-export default PetCard;
+// export default PetCard;
 
 //     <Card style={{ width: '18rem' }}>
 //       <Card.Img variant="top" src="holder.js/100px180" />
@@ -143,3 +143,41 @@ export default PetCard;
 // }
 
 // export default BasicExample;
+import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import whiteCat from '../../images/whiteCat.jpg';
+import './PetCard.css';
+import { Link } from 'react-router-dom';
+import NavigateButton from '../layout/NavigateButton';
+
+// import Card from 'react-bootstrap/Card';
+// import whiteCat from '../../images/whiteCat.jpg';
+// import './PetCard.css';
+// import { Link } from 'react-router-dom';
+// import NavigateButton from '../layout/NavigateButton';
+
+function GridExample() {
+  return (
+    <Row xs={1} md={2} className="g-4">
+      {Array.from({ length: 4 }).map((_, idx) => (
+        <Col key={idx}>
+          <Card>
+            <Card.Img variant="top" src={whiteCat} alt="white cat" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+  );
+}
+
+export default GridExample;
