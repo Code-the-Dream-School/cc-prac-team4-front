@@ -24,12 +24,12 @@ const Home = () => {
           <h1>WELCOME TO ADOPT PET</h1>
           {/* <p>FIND YOUR FRIEND</p> */}
           <div className="find_pet_button">
-            <NavigateButton
+            {/* <NavigateButton
               linkName={'/pets'}
               children={'FIND YOUR FRIENDS'}
-              size="lg"
-              // onClick={() => navigate('/pets', { replace: true })}
-            />
+              size="lg" */}
+            {/* // onClick={() => navigate('/pets', { replace: true })} */}
+            {/* /> */}
           </div>
           {/* <button>ADOPT NOW</button> */}
         </div>
