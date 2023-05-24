@@ -148,9 +148,9 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import whiteCat from '../../images/whiteCat.jpg';
-import './PetCard.css';
-import { Link } from 'react-router-dom';
-import NavigateButton from '../layout/NavigateButton';
+// import './PetCard.css';
+// import { Link } from 'react-router-dom';
+// import NavigateButton from '../layout/NavigateButton';
 
 // import Card from 'react-bootstrap/Card';
 // import whiteCat from '../../images/whiteCat.jpg';
@@ -158,14 +158,42 @@ import NavigateButton from '../layout/NavigateButton';
 // import { Link } from 'react-router-dom';
 // import NavigateButton from '../layout/NavigateButton';
 
-function GridExample() {
+function PetCard() {
   return (
-    <Row xs={1} md={2} className="g-4">
-      {Array.from({ length: 4 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src={whiteCat} alt="white cat" />
-            <Card.Body>
+    <Row xs={1} md={3} className="row-cols-3 g-col-4">
+      {Array.from({ length: 9 }).map((_, idx) => (
+        <Col className="mb-4" key={idx}>
+          <Card
+            className="border-0"
+            style={{ width: '18rem', background: 'transporent' }}
+          >
+            {/* <Card.Img variant=“top” src=“holder.js/100px180?text=Image cap” / */}
+            {/* <Card.Img variant="top" src={`${whiteCat}/100px180`} /> */}
+            <Card.Img
+              variant="top"
+              // src={`${whiteCat}/100px180`}
+              // style={{ width: '100%', height: '18rem' }}
+              style={{ width: '100%', height: '20rem', objectFit: 'cover' }}
+              src={whiteCat}
+              alt="white cat"
+            />
+            {/* <svg
+              class="bd-placeholder-img card-img-top"
+              width="100%"
+              height="180"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: Image cap"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            > 
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#868e96"></rect>
+              <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
+                Image cap
+              </text>
+          </svg>*/}
+            <Card.Body style={{ background: 'transporent' }}>
               <Card.Title>Card title</Card.Title>
               <Card.Text>
                 This is a longer card with supporting text below as a natural
@@ -180,4 +208,4 @@ function GridExample() {
   );
 }
 
-export default GridExample;
+export default PetCard;

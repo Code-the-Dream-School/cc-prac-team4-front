@@ -13,7 +13,7 @@ const Home = () => {
 
   setTimeout(() => {
     setLoading(false);
-  }, 5000);
+  }, 1000);
 
   return (
     <>
@@ -41,9 +41,9 @@ const Home = () => {
         // <div className="cardsContainerWithSort">
         <div className="cardsContainer" id="container">
           <PetCard />
+          {/* <PetCard />
           <PetCard />
-          <PetCard />
-          <PetCard />
+          <PetCard /> */}
         </div>
         // </div>
       )}

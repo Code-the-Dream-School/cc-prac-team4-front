@@ -41,21 +41,22 @@ video {
   padding-left: 4rem;
 }
 
-.cardsContainer {
+/* .cardsContainer {
   width: 100%;
   display: grid;
   /* grid-template-columns: repeat(3, 1fr); */
-  grid-template-columns: var(
-    --breakpoint-grid_column-template,
-    repeat(var(--breakpoint-grid_columns, 1), minmax(0, 1fr))
-  );
-  --breakpoint-grid_columns: 3;
-  grid-gap: 2rem;
-  justify-items: center;
-  margin-top: 5rem;
-  padding-inline: var(--explore_padding-inline);
-  --explore_padding-inline: 3rem;
-}
+/* grid-template-columns: var(
+  --breakpoint-grid_column-template,
+  repeat(var(--breakpoint-grid_columns, 1), minmax(0, 1fr))
+);
+--breakpoint-grid_columns: 3;
+grid-gap: 2rem;
+justify-items: center;
+margin-top: 5rem;
+padding-inline: var(--explore_padding-inline); */
+
+/* --explore_padding-inline: 3rem; */
+/* } */
 .find_pet_button button {
   background-color: var(--color-btn-tomato);
   border: 2px solid rgb(206, 92, 72);
@@ -64,9 +65,9 @@ video {
 
 /* Responsive Design Mobile */
 @media screen and (max-width: 900px) {
-  .cardsContainer {
+  /* .cardsContainer {
     --breakpoint-grid_columns: 2;
-  }
+  } */
 }
 
 /* Responsive Design Mobile */
@@ -80,7 +81,7 @@ video {
   video {
     display: none;
   }
-  .cardsContainer {
+  /* .cardsContainer {
     --breakpoint-grid_columns: 1;
-  }
+  } */
 }
