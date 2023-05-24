@@ -6,6 +6,7 @@ import PetCard from './PetCard';
 // import AdoptButton from "./AdoptButton";
 // import FindYourPetButton from "./NavigateButton";
 import NavigateButton from '../layout/NavigateButton';
+import '../../App.css';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);

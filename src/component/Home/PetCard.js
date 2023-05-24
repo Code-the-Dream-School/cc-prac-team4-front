@@ -95,13 +95,18 @@ import { Link } from 'react-router-dom';
 import NavigateButton from '../layout/NavigateButton';
 
 function PetCard() {
+  const CardInfo = [
+    { image: '', title: '', text: '' },
+    { image: '', title: '', text: '' },
+    { image: '', title: '', text: '' },
+    { image: '', title: '', text: '' },
+  ];
   return (
     <>
       <div className="cardContainer">
         <Link className="petCard_link" to="/pet/cat`">
-          <Card className="petCard">
+          <Card className="card">
             <Card.Img variant="top" src={whiteCat} alt="white cat" />
-
             <Card.Body>
               <Card.Title>Musya</Card.Title>
               <Card.Text>
@@ -109,7 +114,7 @@ function PetCard() {
                 the bulk of the card's content.
               </Card.Text>
 
-              {/* <NavigateButton /> */}
+              <NavigateButton />
             </Card.Body>
           </Card>
         </Link>

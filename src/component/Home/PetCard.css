@@ -9,6 +9,7 @@
 /* .card,
 .card-header,
 .card-footer { */
+
 .card {
   display: flex;
   flex-direction: column;

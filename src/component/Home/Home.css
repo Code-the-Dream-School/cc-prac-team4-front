@@ -15,15 +15,7 @@ header {
   justify-content: center;
   gap: 2rem;
   position: relative;
-  /* flex-direction: row; */
-  /* background-color: var(--background-color); */
-  /* margin: 1.5rem auto 0; */
-  /* padding: 1rem; */
-  border-radius: 18px;
-  /* width: min(90%, 50rem); */
-  /* max-width: 100%; */
-  /* min-height: 30rem; */
-  /* box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.8); */
+  background-color: var(--color-background);
   margin-bottom: 1rem;
 }
 .home_banner {
