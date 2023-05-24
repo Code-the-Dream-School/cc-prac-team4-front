@@ -105,8 +105,11 @@ function PetCard() {
     <>
       <div className="cardContainer">
         <Link className="petCard_link" to="/pet/cat`">
-          <Card className="card">
-            <Card.Img variant="top" src={whiteCat} alt="white cat" />
+          {/* <Card className="petCard"> */}
+          <Card style={{ width: '18rem' }}>
+            {/* <Card.Img variant="top" src={whiteCat} alt="white cat" /> */}
+            <Card.Img variant="top" src={whiteCat} />
+
             <Card.Body>
               <Card.Title>Musya</Card.Title>
               <Card.Text>

@@ -10,29 +10,29 @@
 .card-header,
 .card-footer { */
 
-.card {
-  display: flex;
-  flex-direction: column;
-  background-color: red;
+/* .petCard { */
+/* display: flex;
+  flex-direction: column; */
+/* background-color: red;
   border: 2px solid green;
   border: none;
-  border-radius: 10px;
-  width: 20rem;
+  border-radius: 10px; */
+/* width: 20rem;
   height: 10rem;
-  justify-content: space-between;
-  /* background-color: transparent;
+  justify-content: space-between; */
+/* background-color: transparent;
   border: none; */
-  /* width: 20rem;
+/* width: 20rem;
   height: auto;
   border-radius: 10px; */
-  /* box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.8); */
-}
-.card-body {
+/* box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.8); */
+/* } */
+/* .card-body {
   display: flex;
   flex-direction: column;
   background-color: transparent;
   border: none;
-}
+} */
 /*.petCard a {
   width: 100%;
   /* background-color: transparent;
@@ -44,14 +44,14 @@
   text-decoration: none;
 } */
 
-.petCard img {
-  /* height: 12rem;
+/* .petCard img { */
+/* height: 12rem;
   width: 100%; */
-  width: 100%;
+/* width: 100%;
   height: 70%;
   border-radius: 10px;
   object-fit: cover;
-}
+} */
 
 /* .Card {
   display: flex;

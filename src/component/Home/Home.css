@@ -7,7 +7,7 @@ header {
   justify-content: center;
 }
 
-.main {
+/* .main {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -17,7 +17,7 @@ header {
   position: relative;
   background-color: var(--color-background);
   margin-bottom: 1rem;
-}
+} */
 .home_banner {
   position: relative;
   width: 100%;
