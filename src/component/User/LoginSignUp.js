@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import style from './LoginSignUp.module.css';
-import Loader from '../layout/Loader/Loader';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faUnlockKeyhole } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import ProfileImg from '../../images/Profile.png';
-import InputWithIcon from '../layout/InputWithIcon/InputWithIcon';
-
+import React, { useState } from "react";
+import style from "./LoginSignUp.module.css";
+import Loader from "../layout/Loader/Loader";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faUnlockKeyhole } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import ProfileImg from "../../images/Profile.png";
+import InputWithIcon from "../layout/InputWithIcon/InputWithIcon";
+import axios from "axios";
 const LoginSignUp = () => {
-  const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState("login");
   //This function switch tabs: login/register
   //depending on LOGIN/REGISTER toggle buttoons
   const switchTabs = (tab) => {
@@ -24,13 +24,13 @@ const LoginSignUp = () => {
   }, 1000);
   //--------------------------------
 
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const { name, email, password } = user;
@@ -40,35 +40,55 @@ const LoginSignUp = () => {
 
   //The loginSubmit function handles the form submission by preventing the default form submission behavior
   // and logging the login email and password to the console for temporary debugging purposes.
-  const loginSubmit = (e) => {
+  const loginSubmit = async (e) => {
     e.preventDefault();
     //---temporary console output of Login Submit form. This data will be passed to beknd later---
     console.log(loginEmail, loginPassword);
+    const res = await axios.post(
+      "/api/v1/login",
+      {email: loginEmail, password: loginPassword},
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(res);
     //-------------------------
   };
 
   //The registerSubmit function handles the form submission by preventing the default form submission behavior,
   //creating a new FormData object with form data, and logging the form data to the console for temporary debugging purposes.
-  const registerSubmit = (e) => {
+  const registerSubmit = async (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
-    myForm.set('name', name);
-    myForm.set('email', email);
-    myForm.set('password', password);
-    myForm.set('avatar', avatar);
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("password", password);
+    myForm.set("avatar", avatar);
     //---temporary console output of Register Submit form. This data will be passed to beknd later---
-    console.log('Form Data');
+    console.log("Form Data");
     for (let obj of myForm) {
       console.log(obj);
     }
     //-------------------------
+    const res = await axios.post(
+      "/api/v1/register",
+      myForm,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(res);
   };
 
   //This function handles data changes in an input form, updating the avatar-related state if triggered by an avatar input field,
   //and updating the user state for other input fields.
   const registerDataChange = (e) => {
-    if (e.target.name === 'avatar') {
+    if (e.target.name === "avatar") {
       const reader = new FileReader();
 
       reader.onload = () => {
@@ -89,37 +109,37 @@ const LoginSignUp = () => {
       {/* Conditional rendering based on loading state */}
       {loading ? (
         // Spinner styled component
-        <Loader className={style['small-spinner']} />
+        <Loader className={style["small-spinner"]} />
       ) : (
         <>
-          <div className={style['LoginSignUpContainer']}>
-            <div className={style['LoginSignUpBox']}>
+          <div className={style["LoginSignUpContainer"]}>
+            <div className={style["LoginSignUpBox"]}>
               <div>
                 {/* LOGIN/REGISTER toggle buttoons */}
-                <div className={style['login_signUp_toggle']}>
-                  <p onClick={() => switchTabs('login')}>LOGIN</p>
-                  <p onClick={() => switchTabs('register')}>REGISTER</p>
+                <div className={style["login_signUp_toggle"]}>
+                  <p onClick={() => switchTabs("login")}>LOGIN</p>
+                  <p onClick={() => switchTabs("register")}>REGISTER</p>
                 </div>
                 <button
                   className={`${
-                    activeTab === 'login'
-                      ? `${style['shiftToNeutral']}`
-                      : `${style['shiftToRight']}`
+                    activeTab === "login"
+                      ? `${style["shiftToNeutral"]}`
+                      : `${style["shiftToRight"]}`
                   }`}
                 ></button>
               </div>
               {/* LoginForm tab */}
               <form
                 className={`${style.loginForm} ${
-                  activeTab === 'login' ? '' : ''
-                } ${activeTab === 'register' ? `${style.shiftToLeft}` : ''}`}
+                  activeTab === "login" ? "" : ""
+                } ${activeTab === "register" ? `${style.shiftToLeft}` : ""}`}
                 onSubmit={loginSubmit}
               >
-                <div className={style['loginEmail']}>
+                <div className={style["loginEmail"]}>
                   {/* InputWithIcon Component for LoginForm field Email: input element with icon. */}
                   <InputWithIcon
-                    type={'email'}
-                    placeholder={'Email'}
+                    type={"email"}
+                    placeholder={"Email"}
                     required
                     value={loginEmail}
                     handleChange={(e) => setLoginEmail(e.target.value)}
@@ -127,11 +147,11 @@ const LoginSignUp = () => {
                     <FontAwesomeIcon icon={faEnvelope} />
                   </InputWithIcon>
                 </div>
-                <div className={style['loginPassword']}>
+                <div className={style["loginPassword"]}>
                   {/* InputWithIcon Component for LoginForm field Password: input element with icon. */}
                   <InputWithIcon
-                    type={'password'}
-                    placeholder={'Password'}
+                    type={"password"}
+                    placeholder={"Password"}
                     required
                     value={loginPassword}
                     handleChange={(e) => setLoginPassword(e.target.value)}
@@ -148,9 +168,9 @@ const LoginSignUp = () => {
               {/* SignUpForm tab */}
               <form
                 className={`${style.signUpForm} ${
-                  activeTab === 'login' ? '' : ''
+                  activeTab === "login" ? "" : ""
                 } ${
-                  activeTab === 'register' ? `${style.shiftToNeutralForm}` : ''
+                  activeTab === "register" ? `${style.shiftToNeutralForm}` : ""
                 }`}
                 encType="multipart/form-data" //this attribute is necessary for file uploads
                 onSubmit={registerSubmit}
@@ -158,13 +178,13 @@ const LoginSignUp = () => {
                 <div className={style.signUpName}>
                   {/* InputWithIcon Component for SignUpForm field Name: input element with icon. */}
                   <InputWithIcon
-                    type={'text'}
-                    placeholder={'Name'}
+                    type={"text"}
+                    placeholder={"Name"}
                     required
                     value={name}
                     handleChange={registerDataChange}
-                    id={'name'}
-                    name={'name'}
+                    id={"name"}
+                    name={"name"}
                   >
                     <FontAwesomeIcon icon={faUser} />
                   </InputWithIcon>
@@ -172,13 +192,13 @@ const LoginSignUp = () => {
                 <div className={style.signUpEmail}>
                   {/* InputWithIcon Component for SignUpForm field Email: input element with icon. */}
                   <InputWithIcon
-                    type={'email'}
-                    placeholder={'Email'}
+                    type={"email"}
+                    placeholder={"Email"}
                     required
                     value={email}
                     handleChange={registerDataChange}
-                    id={'email'}
-                    name={'email'}
+                    id={"email"}
+                    name={"email"}
                   >
                     <FontAwesomeIcon icon={faEnvelope} />
                   </InputWithIcon>
@@ -186,13 +206,13 @@ const LoginSignUp = () => {
                 <div className={style.signUpPassword}>
                   {/* InputWithIcon Component for SignUpForm field Password: input element with icon. */}
                   <InputWithIcon
-                    type={'password'}
-                    placeholder={'Password'}
+                    type={"password"}
+                    placeholder={"Password"}
                     required
                     value={password}
                     handleChange={registerDataChange}
-                    id={'password'}
-                    name={'password'}
+                    id={"password"}
+                    name={"password"}
                   >
                     <FontAwesomeIcon icon={faUnlockKeyhole} />
                   </InputWithIcon>
