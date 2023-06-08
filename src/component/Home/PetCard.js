@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import whiteCat from '../../images/whiteCat.jpg';
+// import whiteCat from '../../images/whiteCat.jpg';
+import contactPage from '../../images/contactPage.jpg';
 import { Link } from 'react-router-dom';
 import FavoriteCheckbox from '../layout/FavoriteCheckbox/FavoriteCheckbox';
 
@@ -15,7 +16,7 @@ const PetCard = () => {
           style={{ width: '19rem' }}
         >
           <div className="link_and_checkbox">
-            <div className="position-absolute top-0 end-0 mt-3 me-3">
+            <div className="position-absolute top-0 end-0 mt-1 me-1">
               <FavoriteCheckbox
                 isChecked={isChecked}
                 setIsChecked={setIsChecked}
@@ -30,12 +31,13 @@ const PetCard = () => {
                 variant="top"
                 style={{
                   width: '100%',
-                  height: '18rem',
+                  height: '19rem',
                   objectFit: 'cover',
                   borderRadius: '20px',
                 }}
-                src={whiteCat}
-                alt="white cat"
+                src={contactPage}
+                // src={whiteCat}
+                // alt="white cat"
               />
               <Card.Body style={{ color: 'var(--color-txt)' }}>
                 <Card.Title>Name</Card.Title>
