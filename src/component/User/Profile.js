@@ -43,18 +43,16 @@ const Profile = () => {
   };
 
   const user = state.user || {};
-  console.log('user: ' + JSON.stringify(user));
 
-  //---------temporarily object-----
-  // {
-  //   name: 'Ivan Ivanov',
-  //   email: 'useremail@gmail.com',
-  //   createdAt: '02/02/2021',
-  //   avatar: {
-  //     url: 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp',
-  //   },
-  // };
-  //--------------------------------
+  if (
+    !user ||
+    (Array.isArray(user) && user.length === 0) ||
+    (typeof user === 'string' && user.trim() === '') ||
+    (typeof user === 'object' && Object.keys(user).length === 0)
+  ) {
+    setErrorMessage('Error: User data is missing or empty.');
+    return <Alert variant="danger">{errorMessage}</Alert>;
+  }
 
   return (
     <>
@@ -62,13 +60,6 @@ const Profile = () => {
         <Loader className="small-spinner" />
       ) : (
         <>
-          {state.user && (
-            <div>
-              <h2>Welcome, {state.user.name}!</h2>
-              <p>Email: {state.user.email}</p>
-              {/* Render other user details */}
-            </div>
-          )}
           {errorMessage && (
             <Alert
               variant="danger"
@@ -78,11 +69,11 @@ const Profile = () => {
               {errorMessage}
             </Alert>
           )}
-          <section
-          // style={{
-          //   backgroundColor: '#fff',
-          // }}
-          >
+          <div className={style['profile-heading-wrapper']}>
+            <h1 className="sr-only">User Profile</h1>
+            <h2 className={style['profile-heading']}>Welcome, {user.name}!</h2>
+          </div>
+          <section>
             {/* ---User Profile Container--- */}
             <MDBContainer className={style['profile-container']}>
               {' '}

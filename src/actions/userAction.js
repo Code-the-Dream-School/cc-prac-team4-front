@@ -21,7 +21,7 @@ export const login = async (
       }
     );
     dispatch({ type: 'LOGIN_SUCCESS' });
-    console.log('login result:' + res); // Loging the response for testing purposes
+    console.log('login result:' + JSON.stringify(res)); // Loging the response for testing purposes
     setSuccessMessage('User successfully logged in.');
 
     // Store token and user ID in cookies
@@ -75,39 +75,22 @@ export const register = async (
 export const loadUser = async (dispatch) => {
   try {
     dispatch({ type: 'LOAD_USER_REQUEST' });
-    // Retrieve the token and userId from the cookies
-    const token = Cookies.get('token');
-    const userId = Cookies.get('userId');
 
-    if (!token || !userId) {
-      throw new Error('Token or userId is missing');
-    }
-    if (token === null) {
-      console.log('token null');
-    }
-    if (token === undefined) {
-      console.log('token undefined');
-    }
-    if (userId === null) {
-      console.log('userId null');
-    }
-    if (userId === undefined) {
-      console.log('userId undefined');
-    }
-
-    const response = await axios.get(`/api/v1/me/${userId}`, {
+    axios.defaults.withCredentials = true;
+    const response = await axios.get(`/api/v1/me/${Cookies.get('userId')}`, {
+      withCredentials: true,
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
       },
     });
 
     dispatch({ type: 'LOAD_USER_SUCCESS', payload: response.data.user });
-    console.log(JSON.stringify(response.data.user));
+    console.log('respons: ' + JSON.stringify(response.data.user)); // Loging the response for testing purposes
   } catch (error) {
     dispatch({
       type: 'LOAD_USER_FAIL',
       payload: error.response?.data?.message || error.message,
     });
-    console.log(error);
+    console.log('error ' + error);
   }
 };
