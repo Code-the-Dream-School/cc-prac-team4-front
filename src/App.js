@@ -13,7 +13,7 @@ import UpdatePassword from './component/User/UpdatePassword';
 import ForgotPassword from './component/User/ForgotPassword';
 import ResetPassword from './component/User/ResetPassword';
 import LoginSignUp from './component/User/LoginSignUp';
-import FavoritesPets from './component/Adoption/FavoritesPets';
+import FavoritePets from './component/Adoption/FavoritePets';
 import ConfirmApplication from './component/Adoption/ConfirmApplication';
 import NotFound from './component/layout/NotFound/NotFound';
 import Footer from './component/layout/Footer/Footer';
@@ -48,8 +48,7 @@ function App() {
       <main className={style['app-body']}>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/pet/:id" element={<PetDetails />} /> */}
-          <Route path="/pet/cat`" element={<PetDetails />} />
+          <Route path="/pet/:id" element={<PetDetails />} />
           <Route path="/pets" element={<Pets />} />
           <Route path="/search" element={<Search />} />
           <Route path="/contact" element={<Contact />} />
@@ -84,7 +83,7 @@ function App() {
             path="/login"
             element={<LoginSignUp onLogin={handleLogin} />}
           />
-          <Route path="/favorites" element={<FavoritesPets />} />
+          <Route path="/favorites" element={<FavoritePets />} />
           <Route
             path="/process/donate"
             element={
