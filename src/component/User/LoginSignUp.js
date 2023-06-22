@@ -1,32 +1,33 @@
-import React, { useState, useReducer, useEffect } from 'react';
-import style from './LoginSignUp.module.css';
-import Loader from '../layout/Loader/Loader';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faUnlockKeyhole } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import ProfileImg from '../../images/Profile.png';
-import InputWithIcon from '../layout/InputWithIcon/InputWithIcon';
-import { login, register } from '../../actions/userAction';
-import { useNavigate } from 'react-router-dom';
-import Alert from 'react-bootstrap/Alert';
-import { initialState, userReducer } from '../../reducers/userReducer';
+import React, { useState, useReducer, useEffect, useContext } from "react";
+import style from "./LoginSignUp.module.css";
+import Loader from "../layout/Loader/Loader";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faUnlockKeyhole } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import ProfileImg from "../../images/Profile.png";
+import InputWithIcon from "../layout/InputWithIcon/InputWithIcon";
+import { login, register } from "../../actions/userAction";
+import { useNavigate } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
+import { initialState, userReducer } from "../../reducers/userReducer";
+import AuthContext from "../../context/auth-context";
 
 const LoginSignUp = () => {
-  const [state, dispatch] = useReducer(userReducer, initialState);
-
+  //const [state, dispatch] = useReducer(userReducer, initialState);
+  const { state, dispatch, login, register } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('login');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
+  const [activeTab, setActiveTab] = useState("login");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   //This function switch tabs: login/register
@@ -50,19 +51,19 @@ const LoginSignUp = () => {
       setSuccessMessage,
       dispatch
     );
-    setLoginEmail('');
-    setLoginPassword('');
+    setLoginEmail("");
+    setLoginPassword("");
   };
   // Reset function to set specific state values back to initial values
   const resetFields = () => {
-    setUser({ ...user, name: '', email: '', password: '' });
+    setUser({ ...user, name: "", email: "", password: "" });
     setAvatar(ProfileImg);
   };
 
   useEffect(() => {
     // Redirect to '/account'
     if (state.isAuthenticated === true) {
-      navigate('/account');
+      navigate("/account");
     }
   }, [state.isAuthenticated, navigate]);
 
@@ -72,10 +73,10 @@ const LoginSignUp = () => {
   const registerSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
-    myForm.set('name', name);
-    myForm.set('email', email);
-    myForm.set('password', password);
-    myForm.set('avatar', avatar);
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("password", password);
+    myForm.set("avatar", avatar);
     register(myForm, setErrorMessage, setSuccessMessage, dispatch);
     // Reset fields
     resetFields();
@@ -84,7 +85,7 @@ const LoginSignUp = () => {
   //This function handles data changes in an input form, updating the avatar-related state if triggered by an avatar input field,
   //and updating the user state for other input fields.
   const registerDataChange = (e) => {
-    if (e.target.name === 'avatar') {
+    if (e.target.name === "avatar") {
       const reader = new FileReader();
 
       reader.onload = () => {
@@ -111,7 +112,7 @@ const LoginSignUp = () => {
           {successMessage && (
             <Alert
               variant="success"
-              onClose={() => setSuccessMessage('')}
+              onClose={() => setSuccessMessage("")}
               dismissible
             >
               {successMessage}
@@ -120,40 +121,40 @@ const LoginSignUp = () => {
           {errorMessage && (
             <Alert
               variant="danger"
-              onClose={() => setErrorMessage('')}
+              onClose={() => setErrorMessage("")}
               dismissible
             >
               {errorMessage}
             </Alert>
           )}
-          <div className={style['LoginSignUpContainer']}>
-            <div className={style['LoginSignUpBox']}>
+          <div className={style["LoginSignUpContainer"]}>
+            <div className={style["LoginSignUpBox"]}>
               <div className={style.ContainerWithButtons}>
                 {/* LOGIN/REGISTER toggle buttons */}
-                <div className={style['login_signUp_toggle']}>
-                  <p onClick={() => switchTabs('login')}>LOGIN</p>
-                  <p onClick={() => switchTabs('register')}>REGISTER</p>
+                <div className={style["login_signUp_toggle"]}>
+                  <p onClick={() => switchTabs("login")}>LOGIN</p>
+                  <p onClick={() => switchTabs("register")}>REGISTER</p>
                 </div>
                 <button
                   className={`${
-                    activeTab === 'login'
-                      ? `${style['shiftToNeutral']}`
-                      : `${style['shiftToRight']}`
+                    activeTab === "login"
+                      ? `${style["shiftToNeutral"]}`
+                      : `${style["shiftToRight"]}`
                   }`}
                 ></button>
               </div>
               {/* LoginForm tab */}
               <form
                 className={`${style.loginForm} ${
-                  activeTab === 'login' ? '' : ''
-                } ${activeTab === 'register' ? `${style.shiftToLeft}` : ''}`}
+                  activeTab === "login" ? "" : ""
+                } ${activeTab === "register" ? `${style.shiftToLeft}` : ""}`}
                 onSubmit={loginSubmit}
               >
-                <div className={style['loginEmail']}>
+                <div className={style["loginEmail"]}>
                   {/* InputWithIcon Component for LoginForm field Email: input element with icon. */}
                   <InputWithIcon
-                    type={'email'}
-                    placeholder={'Email'}
+                    type={"email"}
+                    placeholder={"Email"}
                     required
                     value={loginEmail}
                     handleChange={(e) => setLoginEmail(e.target.value)}
@@ -161,11 +162,11 @@ const LoginSignUp = () => {
                     <FontAwesomeIcon icon={faEnvelope} />
                   </InputWithIcon>
                 </div>
-                <div className={style['loginPassword']}>
+                <div className={style["loginPassword"]}>
                   {/* InputWithIcon Component for LoginForm field Password: input element with icon. */}
                   <InputWithIcon
-                    type={'password'}
-                    placeholder={'Password'}
+                    type={"password"}
+                    placeholder={"Password"}
                     required
                     value={loginPassword}
                     handleChange={(e) => setLoginPassword(e.target.value)}
@@ -182,9 +183,9 @@ const LoginSignUp = () => {
               {/* SignUpForm tab */}
               <form
                 className={`${style.signUpForm} ${
-                  activeTab === 'login' ? '' : ''
+                  activeTab === "login" ? "" : ""
                 } ${
-                  activeTab === 'register' ? `${style.shiftToNeutralForm}` : ''
+                  activeTab === "register" ? `${style.shiftToNeutralForm}` : ""
                 }`}
                 encType="multipart/form-data" //this attribute is necessary for file uploads
                 onSubmit={registerSubmit}
@@ -192,13 +193,13 @@ const LoginSignUp = () => {
                 <div className={style.signUpName}>
                   {/* InputWithIcon Component for SignUpForm field Name: input element with icon. */}
                   <InputWithIcon
-                    type={'text'}
-                    placeholder={'Name'}
+                    type={"text"}
+                    placeholder={"Name"}
                     required
                     value={name}
                     handleChange={registerDataChange}
-                    id={'name'}
-                    name={'name'}
+                    id={"name"}
+                    name={"name"}
                   >
                     <FontAwesomeIcon icon={faUser} />
                   </InputWithIcon>
@@ -206,13 +207,13 @@ const LoginSignUp = () => {
                 <div className={style.signUpEmail}>
                   {/* InputWithIcon Component for SignUpForm field Email: input element with icon. */}
                   <InputWithIcon
-                    type={'email'}
-                    placeholder={'Email'}
+                    type={"email"}
+                    placeholder={"Email"}
                     required
                     value={email}
                     handleChange={registerDataChange}
-                    id={'email'}
-                    name={'email'}
+                    id={"email"}
+                    name={"email"}
                   >
                     <FontAwesomeIcon icon={faEnvelope} />
                   </InputWithIcon>
@@ -220,13 +221,13 @@ const LoginSignUp = () => {
                 <div className={style.signUpPassword}>
                   {/* InputWithIcon Component for SignUpForm field Password: input element with icon. */}
                   <InputWithIcon
-                    type={'password'}
-                    placeholder={'Password'}
+                    type={"password"}
+                    placeholder={"Password"}
                     required
                     value={password}
                     handleChange={registerDataChange}
-                    id={'password'}
-                    name={'password'}
+                    id={"password"}
+                    name={"password"}
                   >
                     <FontAwesomeIcon icon={faUnlockKeyhole} />
                   </InputWithIcon>

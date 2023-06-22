@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
+import Cookies from "js-cookie";
 
 // Login
 export const login = async (
@@ -8,25 +9,27 @@ export const login = async (
   setSuccessMessage,
   dispatch
 ) => {
-  dispatch({ type: 'LOGIN_REQUEST' });
+  dispatch({ type: "LOGIN_REQUEST" });
   try {
-    /* const res =*/ await axios.post(
-      '/api/v1/login',
+    const res = await axios.post(
+      "/api/v1/login",
       { email, password },
       {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       }
     );
-    dispatch({ type: 'LOGIN_SUCCESS' });
+    dispatch({ type: "LOGIN_SUCCESS" });
     //console.log('login result:' + JSON.stringify(res)); // logging the response for testing purposes
-    setSuccessMessage('User successfully logged in.');
+    Cookies.set("user-id", res.data.userId);
+    Cookies.set("user-name", res.data.user.name);
+    setSuccessMessage("User successfully logged in.");
   } catch (error) {
-    dispatch({ type: 'LOGIN_FAILURE' });
+    dispatch({ type: "LOGIN_FAILURE" });
     // Error handling: showing an error message
     //console.error('Error:', error);
-    setErrorMessage('An error occurred during login. Please try again.');
+    setErrorMessage("An error occurred during login. Please try again.");
   }
 };
 
@@ -37,25 +40,27 @@ export const register = async (
   setSuccessMessage,
   dispatch
 ) => {
-  dispatch({ type: 'REGISTER_USER_REQUEST' });
+  dispatch({ type: "REGISTER_USER_REQUEST" });
   try {
-    /* const res = */ await axios.post('/api/v1/register', userData, {
+    const res = await axios.post("/api/v1/register", userData, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
-    dispatch({ type: 'REGISTER_USER_SUCCESS' });
+    dispatch({ type: "REGISTER_USER_SUCCESS" });
     //console.log(JSON.stringify(res)); // logging the response for testing purposes
     //console.log(res.statusText); // logging the statusText response for testing purposes
-    setSuccessMessage('User account successfully created. You can login now');
+    Cookies.set("user-id", res.data.userId);
+    Cookies.set("user-name", res.data.user.name);
+    setSuccessMessage("User account successfully created. You can login now");
   } catch (error) {
-    dispatch({ type: 'REGISTER_USER_FAIL' });
+    dispatch({ type: "REGISTER_USER_FAIL" });
     // Error handling: showing an error message
-    console.error('Error:', error);
+    console.error("Error:", error);
     if (error.response && error.response.data && error.response.data.msg) {
       setErrorMessage(
         error.response?.data?.msg ||
-          'An error occurred during registration. Please try again.'
+          "An error occurred during registration. Please try again."
       );
       //console.log(error.response.data.msg);
     }
@@ -65,20 +70,20 @@ export const register = async (
 // Load User
 export const loadUser = async (dispatch) => {
   try {
-    dispatch({ type: 'LOAD_USER_REQUEST' });
+    dispatch({ type: "LOAD_USER_REQUEST" });
 
     const response = await axios.get(`/api/v1/me`, {
       withCredentials: true,
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
-    dispatch({ type: 'LOAD_USER_SUCCESS', payload: response.data.user });
+    dispatch({ type: "LOAD_USER_SUCCESS", payload: response.data.user });
     //console.log('response: ' + JSON.stringify(response.data.user)); // logging the response for testing purposes
   } catch (error) {
     dispatch({
-      type: 'LOAD_USER_FAIL',
+      type: "LOAD_USER_FAIL",
       payload: error.response?.data?.message || error.message,
     });
     //console.log('error ' + error);
@@ -91,14 +96,16 @@ export const logout = async (dispatch) => {
     const response = await axios.get(`/api/v1/logout`, {
       withCredentials: true,
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
-    console.log('Logout response: ' + JSON.stringify(response.data.success)); // logging the response for testing purposes
-    dispatch({ type: 'LOGOUT_SUCCESS' });
+    console.log("Logout response: " + JSON.stringify(response.data.success)); // logging the response for testing purposes
+    Cookies.remove("user-id", { path: "" });
+    Cookies.remove("user-name", { path: "" });
+    dispatch({ type: "LOGOUT_SUCCESS" });
   } catch (error) {
     dispatch({
-      type: 'LOGOUT_FAIL',
+      type: "LOGOUT_FAIL",
       payload: error.response?.data?.message || error.message,
     });
     throw error;
@@ -112,26 +119,26 @@ export const updateUserProfile = async (
   setSuccessMessage,
   dispatch
 ) => {
-  dispatch({ type: 'UPDATE_PROFILE_REQUEST' });
+  dispatch({ type: "UPDATE_PROFILE_REQUEST" });
   try {
-    const response = await axios.patch('/api/v1/me/update', userData, {
+    const response = await axios.patch("/api/v1/me/update", userData, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
     console.log(
-      'Update Profile response: ' + JSON.stringify(response.data.msg)
+      "Update Profile response: " + JSON.stringify(response.data.msg)
     ); // logging the response for testing purposes
-    dispatch({ type: 'UPDATE_PROFILE_SUCCESS' });
-    setSuccessMessage('Profile successfully updated!');
+    dispatch({ type: "UPDATE_PROFILE_SUCCESS" });
+    setSuccessMessage("Profile successfully updated!");
   } catch (error) {
     dispatch({
-      type: 'UPDATE_PROFILE_FAIL',
+      type: "UPDATE_PROFILE_FAIL",
       payload: error.response?.data?.message || error.message,
     });
-    console.log('Error', error.message); // logging the error for testing purposes
+    console.log("Error", error.message); // logging the error for testing purposes
     setErrorMessage(
-      'Apologies, but an error occurred while updating your profile. Please try again later.'
+      "Apologies, but an error occurred while updating your profile. Please try again later."
     );
   }
 };

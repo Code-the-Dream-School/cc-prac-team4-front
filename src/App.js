@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Header from './component/layout/Header/Header';
-import About from './component/layout/About/About';
-import Home from './component/Home/Home';
-import PetDetails from './component/Pet/PetDetails';
-import Pets from './component/Pet/Pets';
-import Search from './component/Pet/Search';
-import Contact from './component/layout/Contact/Contact';
-import Profile from './component/User/Profile';
-import UpdateProfile from './component/User/UpdateProfile';
-import UpdatePassword from './component/User/UpdatePassword';
-import ForgotPassword from './component/User/ForgotPassword';
-import ResetPassword from './component/User/ResetPassword';
-import LoginSignUp from './component/User/LoginSignUp';
-import FavoritePets from './component/Adoption/FavoritePets';
-import ConfirmApplication from './component/Adoption/ConfirmApplication';
-import NotFound from './component/layout/NotFound/NotFound';
-import Footer from './component/layout/Footer/Footer';
-import NoFavorites from './component/NoFavorites/NoFavorites';
-import Donate from './component/Donate/Donate';
-import OurTeam from './component/layout/OurTeam/OurTeam';
-import style from './App.module.css';
+import React, { useState, useContext, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Header from "./component/layout/Header/Header";
+import About from "./component/layout/About/About";
+import Home from "./component/Home/Home";
+import PetDetails from "./component/Pet/PetDetails";
+import Pets from "./component/Pet/Pets";
+import Search from "./component/Pet/Search";
+import Contact from "./component/layout/Contact/Contact";
+import Profile from "./component/User/Profile";
+import UpdateProfile from "./component/User/UpdateProfile";
+import UpdatePassword from "./component/User/UpdatePassword";
+import ForgotPassword from "./component/User/ForgotPassword";
+import ResetPassword from "./component/User/ResetPassword";
+import LoginSignUp from "./component/User/LoginSignUp";
+import FavoritePets from "./component/Adoption/FavoritePets";
+import ConfirmApplication from "./component/Adoption/ConfirmApplication";
+import NotFound from "./component/layout/NotFound/NotFound";
+import Footer from "./component/layout/Footer/Footer";
+import NoFavorites from "./component/NoFavorites/NoFavorites";
+import Donate from "./component/Donate/Donate";
+import OurTeam from "./component/layout/OurTeam/OurTeam";
+import style from "./App.module.css";
+import AuthContext from "./context/auth-context";
+import { faListSquares } from "@fortawesome/free-solid-svg-icons";
 
 function ProtectedRoute({ isAuthenticated, children }) {
   if (isAuthenticated === false) {
@@ -30,7 +32,13 @@ function ProtectedRoute({ isAuthenticated, children }) {
 }
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { userId, userName } = useContext(AuthContext);
+  useEffect(() => {
+    setIsAuthenticated(userId ? true : false);
+  }, [userId]);
+  console.log(userId, userName);
+  console.log(isAuthenticated, "FROM App is auth");
   // Function to handle user login
   const handleLogin = () => {
     // authentication logic will be implemented later
@@ -45,7 +53,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className={style['app-body']}>
+      <main className={style["app-body"]}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pet/:id" element={<PetDetails />} />
@@ -56,7 +64,7 @@ function App() {
           <Route
             path="/account"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <ProtectedRoute isAuthenticated={userId && true}>
                 <Profile onLogout={handleLogout} />
               </ProtectedRoute>
             }

@@ -1,18 +1,20 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { TbSearch } from 'react-icons/tb';
-import { TbCat } from 'react-icons/tb';
-import { TbDog } from 'react-icons/tb';
-import style from './Header.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import React, { useContext } from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { TbSearch } from "react-icons/tb";
+import { TbCat } from "react-icons/tb";
+import { TbDog } from "react-icons/tb";
+import style from "./Header.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import AuthContext from "../../../context/auth-context";
 
 const Header = () => {
+  const { userName } = useContext(AuthContext);
   return (
     <Navbar
       collapseOnSelect
@@ -61,7 +63,7 @@ const Header = () => {
                   width: 170,
                   border: 0,
                   borderRadius: 18,
-                  position: 'relative',
+                  position: "relative",
                 }}
               />
               <Button
@@ -69,18 +71,18 @@ const Header = () => {
                 variant="outline-default"
                 style={{
                   border: 2,
-                  cursor: 'pointer',
-                  textAlign: 'center',
+                  cursor: "pointer",
+                  textAlign: "center",
                   borderRadius: 50,
-                  backgroundColor: 'var(--color-btn)',
-                  position: 'relative',
+                  backgroundColor: "var(--color-btn)",
+                  position: "relative",
                   right: 31,
                   paddingTop: 1,
                   paddingBottom: 4,
                   paddingInline: 5,
                 }}
                 onClick={() => {
-                  alert('search');
+                  alert("search");
                 }}
               >
                 <TbSearch
@@ -95,14 +97,20 @@ const Header = () => {
               </Nav>
             </Form>
           </div>
-          <Nav>
-            {/* <Nav.Link className={style.navLinkLogInHeader} href="/login">
+
+          {!userName ? (
+            <p style={{ color: "white" }}>LOGIN</p>
+          ) : (
+            <Nav>
+              {/* <Nav.Link className={style.navLinkLogInHeader} href="/login">
               LogIn
             </Nav.Link> */}
-            <Nav.Link href="/account" className={style.navLinkHeader}>
-              <FontAwesomeIcon icon={faUser} />
-            </Nav.Link>
-          </Nav>
+            <p style={{ color: "white" }}>{userName} LOGOUT</p>
+              <Nav.Link href="/account" className={style.navLinkHeader}>
+                <FontAwesomeIcon icon={faUser} />
+              </Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
